@@ -1,10 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const total = doc.scrollHeight - window.innerHeight;
+      const scrolled = total > 0 ? (window.scrollY / total) * 100 : 0;
+      setProgress(Math.min(100, Math.max(0, scrolled)));
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -17,6 +34,11 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow-md fixed w-full top-0 z-50">
+      {/* progress bar */}
+      <div className="progress-wrap">
+        <div className="progress" style={{ width: `${progress}%` }} />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">

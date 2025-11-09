@@ -1,16 +1,21 @@
 import ImageSlider from './ImageSlider';
 import { Award, Users, BookOpen, TrendingUp } from 'lucide-react';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 export default function Home() {
   const stats = [
-    { icon: Users, label: 'Students', value: '1000+' },
-    { icon: BookOpen, label: 'Courses', value: '15+' },
-    { icon: Award, label: 'Awards', value: '50+' },
-    { icon: TrendingUp, label: 'Success Rate', value: '98%' },
+    { icon: Users, label: 'Students', value: 1000, suffix: '+' },
+    { icon: BookOpen, label: 'Courses', value: 15, suffix: '+' },
+    { icon: Award, label: 'Awards', value: 50, suffix: '+' },
+    { icon: TrendingUp, label: 'Success Rate', value: 98, suffix: '%' },
   ];
   const welcomeRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // count-up state
+  const [counts, setCounts] = useState<number[]>(stats.map(() => 0));
+  const countsRef = useRef<number[]>(stats.map(() => 0));
+  const countingRef = useRef<boolean>(false);
 
   const handleLearnMore = () => {
     welcomeRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -33,10 +38,41 @@ export default function Home() {
       { threshold: 0.18 }
     );
     elems.forEach((el, i) => {
-      // stagger if needed
       el.style.setProperty('--delay', `${i * 80}ms`);
       io.observe(el);
     });
+
+    // observe stats block to start counting
+    const statsEl = root.querySelector('#home-stats');
+    if (statsEl) {
+      const sIo = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !countingRef.current) {
+              countingRef.current = true;
+              // animate counts
+              stats.forEach((s, idx) => {
+                const target = s.value;
+                const duration = 1200;
+                const start = performance.now();
+                const step = (now: number) => {
+                  const t = Math.min(1, (now - start) / duration);
+                  const value = Math.floor(t * target);
+                  countsRef.current[idx] = value;
+                  setCounts([...countsRef.current]);
+                  if (t < 1) requestAnimationFrame(step);
+                };
+                requestAnimationFrame(step);
+              });
+              sIo.disconnect();
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      sIo.observe(statsEl);
+    }
+
     return () => io.disconnect();
   }, []);
 
@@ -44,7 +80,7 @@ export default function Home() {
     <section className="pt-20" ref={containerRef}>
       <ImageSlider />
 
-      <div className="py-16 bg-gradient-to-br from-blue-50 to-blue-100 reveal" data-delay="0ms">
+      <div id="home-stats" className="py-16 bg-gradient-to-br from-blue-50 to-blue-100 reveal" data-delay="0ms">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 tracking-tight">
             Why Choose Us
@@ -63,7 +99,8 @@ export default function Home() {
                     </div>
                   </div>
                   <h3 className="text-4xl font-extrabold text-blue-900 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                    {stat.value}
+                    {counts[index]}
+                    {stat.suffix}
                   </h3>
                   <p className="text-gray-600 text-lg">{stat.label}</p>
                 </div>
@@ -73,7 +110,7 @@ export default function Home() {
           <div className="flex justify-center mt-10">
             <button
               onClick={handleLearnMore}
-              className="bg-blue-900 text-white px-8 py-3 rounded-md font-semibold shadow hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="bg-blue-900 btn-ripple text-white px-8 py-3 rounded-md font-semibold shadow hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               Learn More
             </button>
@@ -81,11 +118,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div
-        ref={welcomeRef}
-        className="py-16 bg-white reveal"
-        data-delay="0ms"
-      >
+      <div ref={welcomeRef} className="py-16 bg-white reveal" data-delay="0ms">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
