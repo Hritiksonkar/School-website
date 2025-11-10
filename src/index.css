@@ -105,55 +105,124 @@
 
 /* Enhanced site loader overlay */
 .site-loader {
-  background: rgba(255,255,255,0.98);
-  backdrop-filter: blur(4px);
-  transition: opacity 300ms ease, visibility 300ms ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(4px);
+    transition: opacity 300ms ease, visibility 300ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* loader logo style */
 .loader-logo {
-  box-shadow: 0 10px 30px rgba(15,23,42,0.12);
-  transform-origin: center;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+    transform-origin: center;
 }
 
 /* subtle rotating animation for svg within logo */
 @keyframes logo-rotate {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(18deg) scale(1.02); }
-  100% { transform: rotate(0deg) scale(1); }
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(18deg) scale(1.02);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
 }
+
 .animate-logo-rotate {
-  animation: logo-rotate 1400ms ease-in-out infinite;
+    animation: logo-rotate 1400ms ease-in-out infinite;
 }
 
 /* top progress bar wrapper (already present; here to ensure style completeness) */
 .progress-wrap {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  z-index: 70;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-}
-.progress {
-  height: 100%;
-  background: linear-gradient(90deg,#06b6d4,#3b82f6);
-  width: 0%;
-  transform-origin: left center;
-  transition: width 150ms linear;
-  box-shadow: 0 2px 8px rgba(59,130,246,0.12);
-  border-radius: 999px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    z-index: 70;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
 }
 
-/* responsive tweaks */
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #06b6d4, #3b82f6);
+    width: 0%;
+    transform-origin: left center;
+    transition: width 150ms linear;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.12);
+    border-radius: 999px;
+}
+
+/* mobile-friendly touch helpers */
+.touch-manipulation {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+}
+
+/* make quick cards taller on mobile for better tap targets */
 @media (max-width: 640px) {
-  .loader-logo { width: 72px; height: 72px; }
-  .site-loader .text-xl { font-size: 1rem; }
+
+    .quick-card,
+    .quick-card a,
+    .quick-card button {
+        min-height: 72px;
+    }
+}
+
+/* stronger focus ring for keyboard users */
+:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+    border-radius: 6px;
+}
+
+/* buttons - ensure larger tap area */
+button,
+a[role="button"] {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* slider caption responsive */
+.slide-caption h2 {
+    font-size: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .slide-caption h2 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .slide-caption h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* testimonials spacing tweaks */
+@media (max-width: 640px) {
+    .relative.bg-white.rounded-xl {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* ensure hero / banners not too tall on mobile */
+@media (max-width: 640px) {
+
+    .w-full.h-\[500px\],
+    .w-full.h-56,
+    .w-full.h-80 {
+        height: 320px !important;
+    }
 }

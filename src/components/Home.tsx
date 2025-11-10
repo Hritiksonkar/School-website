@@ -128,23 +128,46 @@ export default function Home() {
 
       {/* Quick Action Cards */}
       <div className="py-8 bg-white">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <a href="/admission" className="flex flex-col items-center gap-2 bg-blue-50 hover:bg-blue-100 p-4 rounded-lg shadow-sm text-center transition">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <a
+            href="/admission"
+            role="button"
+            aria-label="Admission - Apply Now"
+            className="w-full flex flex-col items-center gap-3 bg-blue-50 hover:bg-blue-100 p-4 sm:p-6 rounded-lg shadow-sm text-center transition touch-manipulation focus:outline-none focus:ring-3 focus:ring-blue-200"
+          >
             <FileText className="text-blue-900" size={28} />
             <span className="font-semibold text-blue-900">Admission</span>
             <small className="text-gray-500">Apply Now</small>
           </a>
-          <a href="/gallery" className="flex flex-col items-center gap-2 bg-blue-50 hover:bg-blue-100 p-4 rounded-lg shadow-sm text-center transition">
+
+          <a
+            href="/gallery"
+            role="button"
+            aria-label="Gallery - Campus Photos"
+            className="w-full flex flex-col items-center gap-3 bg-blue-50 hover:bg-blue-100 p-4 sm:p-6 rounded-lg shadow-sm text-center transition touch-manipulation focus:outline-none focus:ring-3 focus:ring-blue-200"
+          >
             <GalleryHorizontal className="text-blue-900" size={28} />
             <span className="font-semibold text-blue-900">Gallery</span>
             <small className="text-gray-500">Campus Photos</small>
           </a>
-          <a href="/results" className="flex flex-col items-center gap-2 bg-blue-50 hover:bg-blue-100 p-4 rounded-lg shadow-sm text-center transition">
+
+          <a
+            href="/results"
+            role="button"
+            aria-label="Results - Check Results"
+            className="w-full flex flex-col items-center gap-3 bg-blue-50 hover:bg-blue-100 p-4 sm:p-6 rounded-lg shadow-sm text-center transition touch-manipulation focus:outline-none focus:ring-3 focus:ring-blue-200"
+          >
             <Award className="text-blue-900" size={28} />
             <span className="font-semibold text-blue-900">Results</span>
             <small className="text-gray-500">Check Results</small>
           </a>
-          <a href="/contact" className="flex flex-col items-center gap-2 bg-blue-50 hover:bg-blue-100 p-4 rounded-lg shadow-sm text-center transition">
+
+          <a
+            href="/contact"
+            role="button"
+            aria-label="Contact - Get in touch"
+            className="w-full flex flex-col items-center gap-3 bg-blue-50 hover:bg-blue-100 p-4 sm:p-6 rounded-lg shadow-sm text-center transition touch-manipulation focus:outline-none focus:ring-3 focus:ring-blue-200"
+          >
             <Phone className="text-blue-900" size={28} />
             <span className="font-semibold text-blue-900">Contact</span>
             <small className="text-gray-500">Get in touch</small>
@@ -155,35 +178,35 @@ export default function Home() {
       {/* Stats */}
       <div id="home-stats" className="py-16 bg-gradient-to-br from-blue-50 to-blue-100 reveal" data-delay="0ms">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 tracking-tight">
             Why Choose Us
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={index}
-                  className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl transition-all duration-300 group cursor-pointer transform hover:-translate-y-2 border border-blue-100"
+                  className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl transition-all duration-300 group cursor-pointer transform hover:-translate-y-1 border border-blue-100"
                 >
-                  <div className="flex justify-center mb-4">
-                    <div className="bg-blue-100 p-4 rounded-full group-hover:bg-blue-900 transition-colors duration-300">
-                      <Icon className="text-blue-900 group-hover:text-white transition-colors duration-300" size={36} />
+                  <div className="flex justify-center mb-3">
+                    <div className="bg-blue-100 p-3 sm:p-4 rounded-full group-hover:bg-blue-900 transition-colors duration-300">
+                      <Icon className="text-blue-900 group-hover:text-white transition-colors duration-300" size={32} />
                     </div>
                   </div>
-                  <h3 className="text-4xl font-extrabold text-blue-900 mb-2 group-hover:text-blue-700 transition-colors duration-300">
+                  <h3 className="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2">
                     {counts[index]}
                     {stat.suffix}
                   </h3>
-                  <p className="text-gray-600 text-lg">{stat.label}</p>
+                  <p className="text-gray-600 text-base sm:text-lg">{stat.label}</p>
                 </div>
               );
             })}
           </div>
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-8">
             <button
               onClick={handleLearnMore}
-              className="bg-blue-900 btn-ripple text-white px-8 py-3 rounded-md font-semibold shadow hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="bg-blue-900 btn-ripple text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-md font-semibold shadow hover:bg-blue-700 transition-colors focus:outline-none focus:ring-3 focus:ring-blue-300"
             >
               Learn More
             </button>
@@ -206,22 +229,22 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Testimonials */}
+      {/* Testimonials (stacked on small screens) */}
       <div className="py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h3 className="text-2xl font-bold text-blue-900 mb-6 text-center">What People Say</h3>
-          <div className="relative bg-white rounded-xl shadow-lg p-8">
+          <div className="relative bg-white rounded-xl shadow-lg p-6 sm:p-8">
             <p className="text-gray-700 italic mb-4">“{testimonials[testimonialIndex].quote}”</p>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
                 <div className="font-semibold text-blue-900">{testimonials[testimonialIndex].name}</div>
                 <div className="text-sm text-gray-500">{testimonials[testimonialIndex].role}</div>
               </div>
               <div className="flex items-center gap-2">
-                <button aria-label="Previous testimonial" onClick={handlePrevTestimonial} className="p-2 rounded-full bg-blue-50 hover:bg-blue-100">
+                <button aria-label="Previous testimonial" onClick={handlePrevTestimonial} className="p-2 rounded-full bg-blue-50 hover:bg-blue-100 touch-manipulation">
                   <ChevronLeft size={18} />
                 </button>
-                <button aria-label="Next testimonial" onClick={handleNextTestimonial} className="p-2 rounded-full bg-blue-50 hover:bg-blue-100">
+                <button aria-label="Next testimonial" onClick={handleNextTestimonial} className="p-2 rounded-full bg-blue-50 hover:bg-blue-100 touch-manipulation">
                   <ChevronRight size={18} />
                 </button>
               </div>
