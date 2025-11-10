@@ -1,5 +1,16 @@
 import ImageSlider from './ImageSlider';
-import { Award, Users, BookOpen, TrendingUp } from 'lucide-react';
+import {
+  Award,
+  Users,
+  BookOpen,
+  TrendingUp,
+  Newspaper,
+  GalleryHorizontal,
+  FileText,
+  Phone,
+  ChevronRight,
+  ChevronLeft,
+} from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
 
 export default function Home() {
@@ -16,6 +27,29 @@ export default function Home() {
   const [counts, setCounts] = useState<number[]>(stats.map(() => 0));
   const countsRef = useRef<number[]>(stats.map(() => 0));
   const countingRef = useRef<boolean>(false);
+
+  // News / Quick data (non-real placeholders)
+  const newsList = [
+    'Admissions Open for 2025-26 — Apply Now',
+    'Annual Sports Day scheduled on 10th April 2025',
+    'Science Exhibition winners announced',
+  ];
+
+  // Testimonials
+  const testimonials = [
+    { name: 'A. Student', role: 'Alumnus', quote: 'Excellent faculty and supportive environment.' },
+    { name: 'B. Parent', role: 'Parent', quote: 'Great focus on all-round development.' },
+    { name: 'C. Teacher', role: 'Faculty', quote: 'Collaborative and motivated students.' },
+  ];
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setTestimonialIndex((i) => (i + 1) % testimonials.length), 6000);
+    return () => clearInterval(t);
+  }, []);
+
+  const handlePrevTestimonial = () => setTestimonialIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+  const handleNextTestimonial = () => setTestimonialIndex((i) => (i + 1) % testimonials.length);
 
   const handleLearnMore = () => {
     welcomeRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -78,8 +112,47 @@ export default function Home() {
 
   return (
     <section className="pt-20" ref={containerRef}>
+      {/* Notice Bar */}
+      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-2 px-4 flex items-center justify-center text-sm md:text-base gap-4">
+        <Newspaper size={16} />
+        <div className="flex gap-6 items-center">
+          {newsList.map((n, i) => (
+            <span key={i} className="whitespace-nowrap">
+              {n}
+            </span>
+          ))}
+        </div>
+      </div>
+
       <ImageSlider />
 
+      {/* Quick Action Cards */}
+      <div className="py-8 bg-white">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="/admission" className="flex flex-col items-center gap-2 bg-blue-50 hover:bg-blue-100 p-4 rounded-lg shadow-sm text-center transition">
+            <FileText className="text-blue-900" size={28} />
+            <span className="font-semibold text-blue-900">Admission</span>
+            <small className="text-gray-500">Apply Now</small>
+          </a>
+          <a href="/gallery" className="flex flex-col items-center gap-2 bg-blue-50 hover:bg-blue-100 p-4 rounded-lg shadow-sm text-center transition">
+            <GalleryHorizontal className="text-blue-900" size={28} />
+            <span className="font-semibold text-blue-900">Gallery</span>
+            <small className="text-gray-500">Campus Photos</small>
+          </a>
+          <a href="/results" className="flex flex-col items-center gap-2 bg-blue-50 hover:bg-blue-100 p-4 rounded-lg shadow-sm text-center transition">
+            <Award className="text-blue-900" size={28} />
+            <span className="font-semibold text-blue-900">Results</span>
+            <small className="text-gray-500">Check Results</small>
+          </a>
+          <a href="/contact" className="flex flex-col items-center gap-2 bg-blue-50 hover:bg-blue-100 p-4 rounded-lg shadow-sm text-center transition">
+            <Phone className="text-blue-900" size={28} />
+            <span className="font-semibold text-blue-900">Contact</span>
+            <small className="text-gray-500">Get in touch</small>
+          </a>
+        </div>
+      </div>
+
+      {/* Stats */}
       <div id="home-stats" className="py-16 bg-gradient-to-br from-blue-50 to-blue-100 reveal" data-delay="0ms">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 tracking-tight">
@@ -118,6 +191,46 @@ export default function Home() {
         </div>
       </div>
 
+      {/* News & Events */}
+      <div className="py-8 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-xl font-semibold text-blue-900 mb-4">Latest News & Events</h3>
+          <ul className="space-y-2 text-gray-700">
+            {newsList.map((n, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <Newspaper className="text-blue-700 mt-1" size={18} />
+                <span>{n}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      <div className="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-2xl font-bold text-blue-900 mb-6 text-center">What People Say</h3>
+          <div className="relative bg-white rounded-xl shadow-lg p-8">
+            <p className="text-gray-700 italic mb-4">“{testimonials[testimonialIndex].quote}”</p>
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="font-semibold text-blue-900">{testimonials[testimonialIndex].name}</div>
+                <div className="text-sm text-gray-500">{testimonials[testimonialIndex].role}</div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button aria-label="Previous testimonial" onClick={handlePrevTestimonial} className="p-2 rounded-full bg-blue-50 hover:bg-blue-100">
+                  <ChevronLeft size={18} />
+                </button>
+                <button aria-label="Next testimonial" onClick={handleNextTestimonial} className="p-2 rounded-full bg-blue-50 hover:bg-blue-100">
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Welcome */}
       <div ref={welcomeRef} className="py-16 bg-white reveal" data-delay="0ms">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">

@@ -33,7 +33,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-md fixed w-full top-0 z-50">
+    <nav className="bg-emerald-300-300 shadow-md fixed w-full top-0 z-50">
       {/* progress bar */}
       <div className="progress-wrap">
         <div className="progress" style={{ width: `${progress}%` }} />
@@ -81,7 +81,7 @@ export default function Navbar() {
 
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-lime-300 shadow-lg">
             {navItems.map((item) => (
               <Link
                 key={item.path}
