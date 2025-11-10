@@ -134,9 +134,10 @@ export default function ImageSlider() {
 						onLoad={() => setLoadedMap((m) => ({ ...m, [index]: true }))}
 						onError={(e) => {
 							const img = e.currentTarget as HTMLImageElement;
-							// hide broken image and keep placeholder
-							img.style.display = 'none';
-							setLoadedMap((m) => ({ ...m, [index]: false }));
+							// replace broken image with SVG placeholder
+							(img as any).onerror = null;
+							img.src = svgPlaceholder;
+							setLoadedMap((m) => ({ ...m, [index]: true }));
 						}}
 					/>
 

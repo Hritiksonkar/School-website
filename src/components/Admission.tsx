@@ -40,7 +40,7 @@ export default function Admission({ topImage }: { topImage?: string }) {
       {topImage && (
         <div className="w-full h-[500px] md:h-[500px] relative">
           <img
-            src={""}
+            src={"image.png"}
             alt="Admission banner"
             className="w-full h-full object-cover"
             onError={(e) => {

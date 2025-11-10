@@ -59,7 +59,7 @@ export default function Services({ topImage }: { topImage?: string }) {
       {topImage && (
         <div className="w-full h-[500px] md:h-[500px] relative">
           <img
-            src={"services.jpg"}
+            src={"servicers.jpg"}
             alt="Services banner"
             className="w-full h-full object-cover"
             onError={(e) => {
