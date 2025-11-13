@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "keywords": [
+    "munner ram inter college saraikhwaja jaunpur ",
+    "mirc",
+    "ramm school"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
