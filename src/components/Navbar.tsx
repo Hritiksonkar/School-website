@@ -51,7 +51,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur shadow-lg">
+    <nav className="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur shadow-lg">
       {/* progress bar */}
       <div className="progress-wrap">
         <div className="progress" style={{ width: `${progress}%` }} />
@@ -69,7 +69,7 @@ export default function Navbar() {
                 onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = 'none')}
               />
               <span className="text-xl md:text-2xl font-bold text-blue-900 leading-tight">
-                Munner Ram <span className="hidden sm:inline">Inter College</span>
+                Munnar Ram <span className="hidden sm:inline">Inter College</span>
               </span>
             </Link>
             <div className="md:hidden">
