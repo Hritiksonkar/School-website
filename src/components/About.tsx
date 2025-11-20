@@ -1,5 +1,12 @@
 import { Users, MapPin, FlaskConical } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const staffProfiles = [
+  { name: 'Dr. Priya Sharma', role: 'Principal', focus: 'Academic leadership & community partnerships.', image: '/team/priya.jpg' },
+  { name: 'Mr. Raghav Verma', role: 'Head of Innovation', focus: 'STEAM labs and olympiad mentoring.', image: '/team/raghav.jpg' },
+  { name: 'Ms. Ananya Gupta', role: 'Curriculum Director', focus: 'Global literacy & creative studios.', image: '/team/ananya.jpg' },
+  { name: 'Mr. Arjun Sethi', role: 'Student Success Coach', focus: 'Career guidance and wellbeing.', image: '/team/arjun.jpg' },
+];
 
 export default function About({ topImage }: { topImage?: string }) {
   const sections = [
@@ -8,12 +15,13 @@ export default function About({ topImage }: { topImage?: string }) {
       title: 'Our Staff',
       content:
         'Our dedicated team of highly qualified teachers and administrative staff work tirelessly to provide the best educational experience. With years of experience and a passion for teaching, our faculty members are committed to student success.',
+      details: staffProfiles,
     },
     {
       icon: MapPin,
       title: 'Location',
       content:
-        'Munner Ram Inter College is conveniently located in a peaceful environment, easily accessible by road. Our campus is designed to provide a conducive learning atmosphere with ample space for academic and extracurricular activities.',
+        'Munnar Ram Inter College is conveniently located in a peaceful environment, easily accessible by road. Our campus is designed to provide a conducive learning atmosphere with ample space for academic and extracurricular activities.',
     },
     {
       icon: FlaskConical,
@@ -23,6 +31,7 @@ export default function About({ topImage }: { topImage?: string }) {
     },
   ];
 
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const rootRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const root = rootRef.current;
@@ -50,9 +59,9 @@ export default function About({ topImage }: { topImage?: string }) {
     <>
       {/* top banner if provided */}
       {topImage && (
-        <div className="w-full h-[500px] md:h-[500px] relative">
+        <div className="w-full h-[500px] relative">
           <img
-            src={"puja3.jpg"}
+            src={topImage}
             alt="About banner"
             className="w-full h-full object-cover"
             onError={(e) => {
@@ -86,11 +95,23 @@ export default function About({ topImage }: { topImage?: string }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {sections.map((section, index) => {
               const Icon = section.icon;
+              const expandable = Boolean((section as any).details);
+              const isActive = activeSection === section.title;
+              const toggleSection = () => {
+                if (!expandable) return;
+                setActiveSection((prev) => (prev === section.title ? null : section.title));
+              };
+
               return (
                 <div
                   key={index}
-                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer transform hover:-translate-y-2 border border-blue-100 about-card reveal"
+                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group transform hover:-translate-y-2 border border-blue-100 about-card reveal"
                   style={{ transitionDelay: 'var(--delay)' }}
+                  role={expandable ? 'button' : undefined}
+                  tabIndex={expandable ? 0 : undefined}
+                  aria-expanded={expandable ? isActive : undefined}
+                  onClick={toggleSection}
+                  onKeyDown={(e) => e.key === 'Enter' && toggleSection()}
                 >
                   <div className="flex justify-center mb-6">
                     <div className="bg-blue-100 p-4 rounded-full group-hover:bg-blue-900 transition-colors duration-300">
@@ -103,6 +124,36 @@ export default function About({ topImage }: { topImage?: string }) {
                   <p className="text-gray-600 text-center leading-relaxed">
                     {section.content}
                   </p>
+
+                  {expandable && (
+                    <div className={`mt-6 overflow-hidden transition-all duration-300 ${isActive ? 'max-h-[900px]' : 'max-h-0'}`}>
+                      <div className="grid gap-4 pt-4 border-t border-blue-100 sm:grid-cols-2">
+                        {(section as any).details.map((profile: typeof staffProfiles[number]) => (
+                          <article key={profile.name} className="flex gap-4 rounded-xl bg-blue-50/70 p-4">
+                            <img
+                              src={profile.image}
+                              alt={profile.name}
+                              className="h-16 w-16 flex-shrink-0 rounded-full object-cover ring-2 ring-blue-200"
+                              onError={(e) => {
+                                (e.currentTarget as HTMLImageElement).src = '/team/placeholder.jpg';
+                              }}
+                            />
+                            <div>
+                              <p className="text-base font-semibold text-blue-900">{profile.name}</p>
+                              <p className="text-sm text-gray-600">{profile.role}</p>
+                              <p className="text-sm text-gray-500">{profile.focus}</p>
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                      <a
+                        href="/staffphoto"
+                        className="mt-6 inline-flex items-center justify-center rounded-full bg-blue-900 px-6 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
+                      >
+                        Meet the entire faculty
+                      </a>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -121,7 +172,7 @@ export default function About({ topImage }: { topImage?: string }) {
                   To provide quality education that empowers students with
                   knowledge, skills, and values necessary for their personal and
                   professional growth, while fostering a culture of excellence,
-                  innovation, and social responsibility.
+                  initiative, and social responsibility.
                 </p>
               </div>
               <div>

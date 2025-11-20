@@ -43,6 +43,19 @@ export default function Home() {
   ];
   const [testimonialIndex, setTestimonialIndex] = useState(0);
 
+  const teamHighlights = [
+    { label: 'Integrated Curriculum', description: 'Experiential learning across STEAM, arts, and civic leadership.' },
+    { label: 'Mentor Network', description: 'Advisors, wellbeing coaches, and university partners for every learner.' },
+    { label: 'Community Impact', description: 'Students lead sustainability drives and outreach programs.' },
+  ];
+
+  const teamMembers = [
+    { name: 'Dr. Priya Sharma', role: 'Principal & Academic Lead', image: '/team/priya.jpg' },
+    { name: 'Mr. Raghav Verma', role: 'Head of Innovation', image: '/team/raghav.jpg' },
+    { name: 'Ms. Ananya Gupta', role: 'Curriculum Director', image: '/team/ananya.jpg' },
+    { name: 'Mr. Arjun Sethi', role: 'Global Programs Coordinator', image: '/team/arjun.jpg' },
+  ];
+
   useEffect(() => {
     const t = setInterval(() => setTestimonialIndex((i) => (i + 1) % testimonials.length), 6000);
     return () => clearInterval(t);
@@ -253,15 +266,64 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Leadership & Mentors */}
+      <div className="py-16 bg-slate-950 text-white reveal" data-delay="0ms">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <div className="space-y-3 text-center">
+            <p className="text-sm uppercase tracking-[0.4em] text-emerald-300">Our Leadership</p>
+            <h3 className="text-3xl sm:text-4xl font-semibold">Guiding every learner with purpose</h3>
+            <p className="text-slate-300 max-w-3xl mx-auto">
+              Faculty mentors, innovation heads, and wellbeing coaches collaborate with families to craft global learning pathways.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {teamHighlights.map((item) => (
+              <div key={item.label} className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <p className="text-lg font-semibold text-emerald-200">{item.label}</p>
+                <p className="text-sm text-slate-200">{item.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="grid gap-6 lg:grid-cols-4">
+            {teamMembers.map((member) => (
+              <div key={member.name} className="rounded-3xl border border-white/10 bg-gradient-to-br from-emerald-600/20 to-slate-900/60 p-5 shadow-xl">
+                <div className="relative h-48 overflow-hidden rounded-2xl bg-slate-900">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="h-full w-full object-cover"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = '/team/placeholder.jpg';
+                    }}
+                  />
+                </div>
+                <div className="mt-4 space-y-1">
+                  <p className="text-xl font-semibold">{member.name}</p>
+                  <p className="text-sm uppercase tracking-[0.2em] text-emerald-200">{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <a
+              href="/staffphoto"
+              className="inline-flex items-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-100"
+            >
+              Meet the entire faculty
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Welcome */}
       <div ref={welcomeRef} className="py-16 bg-white reveal" data-delay="0ms">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
-              Welcome to Munner Ram Inter College
+              Welcome to Munnar Ram Inter College
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              At <span className="font-semibold text-blue-900">Munner Ram Inter College</span>, we are committed to providing quality
+              At <span className="font-semibold text-blue-900">Munnar Ram Inter College</span>, we are committed to providing quality
               education and nurturing young minds. Our institution offers a
               comprehensive learning environment with modern facilities,
               experienced faculty, and a focus on holistic development. We

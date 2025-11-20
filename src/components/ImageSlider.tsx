@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const slides = [
 	{
 		id: 1,
-		title: 'Welcome to Munner Ram Inter College',
+		title: 'Welcome to Munnar Ram Inter College',
 		description: 'Excellence in Education Since Establishment',
 		image: '/frontend.jpg',
 	},
@@ -145,10 +145,25 @@ export default function ImageSlider() {
 					<div className="absolute inset-0 bg-black/60" />
 					<div className="relative flex items-center justify-center h-full">
 						<div className="text-center text-white px-4 reveal" data-delay="0ms">
-							<h2 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-								{slide.title}
-							</h2>
-							<p className="text-xl md:text-2xl drop-shadow-lg">{slide.description}</p>
+							<span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.4em]">
+								Inspired Learning
+							</span>
+							<h2 className="mt-4 text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">{slide.title}</h2>
+							<p className="text-lg md:text-2xl text-white/80 drop-shadow-md">{slide.description}</p>
+							<div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+								<a
+									href="/galleryphoto"
+									className="inline-flex items-center justify-center rounded-full bg-white/90 px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-white"
+								>
+									Explore Campus
+								</a>
+								<a
+									href="/admission"
+									className="inline-flex items-center justify-center rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
+								>
+									Begin Admission
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -1,5 +1,5 @@
 import About from '../components/About';
 
 export default function AboutPage() {
-  return <About topImage="/about-banner.jpg" />;
+  return <About topImage="/front.jpg" />;
 }

@@ -39,33 +39,39 @@ export default function Navbar() {
     };
   }, []);
 
+  const navLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/about', label: 'About' },
+    { path: '/courses', label: 'Courses' },
+    { path: '/services', label: 'Services' },
+    { path: '/galleryphoto', label: 'Gallery' },
+    { path: '/staffphoto', label: 'Faculty' },
+    { path: '/admission', label: 'Admission' },
+    { path: '/contact', label: 'Contact' },
+  ];
+
   return (
-    <nav className="bg-opacity-0 shadow-md fixed w-full top-0 z-50">
+    <nav className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur shadow-lg">
       {/* progress bar */}
       <div className="progress-wrap">
         <div className="progress" style={{ width: `${progress}%` }} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Compact header: brand + (mobile toggle) on left, desktop nav on right */}
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Left: brand + mobile toggle (toggle only visible on small screens) */}
+          {/* brand + mobile toggle */}
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-3">
-              {/* optional small logo */}
               <img
                 src="/front.jpg"
                 alt="logo"
-                className="w-8 h-8 object-cover rounded-sm"
+                className="w-9 h-9 object-cover rounded-md shadow-sm"
                 onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = 'none')}
               />
-              <span className="text-lg sm:text-xl md:text-2xl font-bold text-blue-900 leading-tight">
-                Munner Ram
-                <span className="hidden sm:inline"> Inter College</span>
+              <span className="text-xl md:text-2xl font-bold text-blue-900 leading-tight">
+                Munner Ram <span className="hidden sm:inline">Inter College</span>
               </span>
             </Link>
-
-            {/* mobile toggle placed directly beside brand for tight layout */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen((s) => !s)}
@@ -77,60 +83,46 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Right: desktop nav links */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {[
-                { path: '/', label: 'Home' },
-                { path: '/about', label: 'About' },
-                { path: '/courses', label: 'Courses' },
-                { path: '/services', label: 'Services' },
-                { path: '/admission', label: 'Admission' },
-                { path: '/contact', label: 'Contact' },
-              ].map((item) => (
+          {/* desktop nav */}
+          <div className="hidden md:flex items-center gap-4">
+            <nav className="flex items-center gap-3">
+              {navLinks.map((item, i) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${location.pathname === item.path
-                      ? 'bg-blue-900 text-white'
-                      : 'text-gray-700 hover:bg-blue-100 hover:text-blue-900'
+                  ref={i === 0 ? firstLinkRef : null}
+                  className={`px-3 py-2 rounded-full text-sm font-medium transition-colors ${location.pathname === item.path
+                    ? 'bg-blue-900 text-white shadow'
+                    : 'text-gray-700 hover:bg-blue-100 hover:text-blue-900'
                     }`}
                 >
                   {item.label}
                 </Link>
               ))}
-            </div>
+            </nav>
+            <a
+              href="/admission"
+              className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-700 to-blue-900 px-5 py-2 text-sm font-semibold text-white shadow hover:from-blue-900 hover:to-blue-700"
+            >
+              Apply Now
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Mobile drawer overlay + panel */}
+      {/* mobile drawer */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 flex">
-          {/* backdrop */}
-          <button
-            className="absolute inset-0 bg-black/40"
-            aria-hidden
-            onClick={() => setIsMenuOpen(false)}
-          />
-          {/* side panel */}
-          <div className="relative w-64 max-w-xs bg-white h-full shadow-lg p-6 overflow-auto">
+          <button className="absolute inset-0 bg-black/40" aria-hidden onClick={() => setIsMenuOpen(false)} />
+          <div className="relative w-64 max-w-xs bg-white h-full shadow-2xl p-6 overflow-auto">
             <div className="flex justify-between items-center mb-6">
               <div className="text-lg font-bold text-blue-900">Menu</div>
               <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu" className="p-2 rounded-md">
                 <X size={20} />
               </button>
             </div>
-
             <nav className="space-y-2">
-              {[
-                { path: '/', label: 'Home' },
-                { path: '/about', label: 'About' },
-                { path: '/courses', label: 'Courses' },
-                { path: '/services', label: 'Services' },
-                { path: '/admission', label: 'Admission' },
-                { path: '/contact', label: 'Contact' },
-              ].map((item, i) => (
+              {navLinks.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
@@ -142,9 +134,13 @@ export default function Navbar() {
                 </Link>
               ))}
             </nav>
+            <a
+              href="/admission"
+              className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-blue-900 px-5 py-2 text-sm font-semibold text-white"
+            >
+              Start Admission
+            </a>
           </div>
-
-          {/* flexible area to close when tapped */}
           <div className="flex-1" onClick={() => setIsMenuOpen(false)} />
         </div>
       )}
