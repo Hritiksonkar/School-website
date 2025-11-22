@@ -111,7 +111,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-white" aria-busy={isLoading}>
+      <div className="min-h-screen bg-white overflow-x-hidden w-full" aria-busy={isLoading}>
         <Navbar />
 
         {/* top progress bar */}

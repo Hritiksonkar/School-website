@@ -1,7 +1,7 @@
 import ImageSlider from './ImageSlider';
 import {
   Award,
-  Users,
+  Users as UsersIcon,
   BookOpen,
   TrendingUp,
   Newspaper,
@@ -15,7 +15,7 @@ import { useRef, useEffect, useState } from 'react';
 
 export default function Home() {
   const stats = [
-    { icon: Users, label: 'Students', value: 1000, suffix: '+' },
+    { icon: UsersIcon, label: 'Students', value: 1000, suffix: '+' },
     { icon: BookOpen, label: 'Courses', value: 15, suffix: '+' },
     { icon: Award, label: 'Awards', value: 50, suffix: '+' },
     { icon: TrendingUp, label: 'Success Rate', value: 98, suffix: '%' },
