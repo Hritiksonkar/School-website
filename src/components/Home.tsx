@@ -50,10 +50,10 @@ export default function Home() {
   ];
 
   const teamMembers = [
-    { name: 'Dr. Priya Sharma', role: 'Principal & Academic Lead', image: '/team/priya.jpg' },
-    { name: 'Mr. Raghav Verma', role: 'Head of Innovation', image: '/team/raghav.jpg' },
-    { name: 'Ms. Ananya Gupta', role: 'Curriculum Director', image: '/team/ananya.jpg' },
-    { name: 'Mr. Arjun Sethi', role: 'Global Programs Coordinator', image: '/team/arjun.jpg' },
+    { name: 'Anita Yadav', role: 'Principal & Academic Lead', image: '\puja3.jpg' },
+    { name: 'Mr.Sunil & Rohit Yadav', role: 'Head of Innovation', image: '\puja2.jpg' },
+    { name: 'Ms.Anil ', role: 'Curriculum Director', image: '/servicers.jpg' },
+    { name: 'Mr. Manoj ', role: 'Global Programs Coordinator', image: '\image.png' },
   ];
 
   useEffect(() => {

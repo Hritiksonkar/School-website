@@ -10,7 +10,7 @@ const slides = [
 	},
 	{
 		id: 2,
-		title: 'State-of-the-Art Facilities',
+		title: 'Principal Event',
 		description: 'Modern Labs and Learning Environments',
 		image: '/puja3.jpg',
 	},
