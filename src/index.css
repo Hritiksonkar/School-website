@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  overflow-x: hidden;
-  width: 100%;
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* reveal / fade-up animation */
@@ -230,4 +231,21 @@ a[role="button"] {
     .w-full.h-80 {
         height: 320px !important;
     }
+}
+
+/* Dropdown animation */
+@keyframes dropdown-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.animate-dropdown {
+    animation: dropdown-enter 0.2s ease-out forwards;
 }

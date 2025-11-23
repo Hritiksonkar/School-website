@@ -71,7 +71,7 @@ export default function Navbar() {
 						</span>
 					</Link>
 
-					<div className="flex items-center gap-3">
+					<div className="relative flex items-center gap-3">
 						<button
 							type="button"
 							onClick={() => setIsMenuOpen((s) => !s)}
@@ -82,6 +82,33 @@ export default function Navbar() {
 							{isMenuOpen ? <X size={22} /> : <Menu size={22} />}
 						</button>
 
+						{isMenuOpen && (
+							<div className="absolute top-full right-0 mt-2 w-48 origin-top-right rounded-xl bg-white p-2 shadow-xl ring-1 ring-black/5 focus:outline-none z-50 animate-dropdown">
+								<div className="flex flex-col gap-1">
+									{navLinks.map((item) => (
+										<Link
+											key={item.path}
+											to={item.path}
+											onClick={() => setIsMenuOpen(false)}
+											className={`block px-4 py-2 text-sm rounded-lg transition-colors ${location.pathname === item.path
+												? 'bg-blue-50 text-blue-900 font-medium'
+												: 'text-gray-700 hover:bg-gray-50 hover:text-blue-900'
+												}`}
+										>
+											{item.label}
+										</Link>
+									))}
+									<hr className="my-1 border-gray-100" />
+									<a
+										href="/admission"
+										className="block px-4 py-2 text-sm font-semibold text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+									>
+										Apply Now
+									</a>
+								</div>
+							</div>
+						)}
+
 						<div className="hidden md:flex items-center gap-4">
 							<nav className="flex items-center gap-3">
 								{navLinks.map((item, i) => (
@@ -89,9 +116,8 @@ export default function Navbar() {
 										key={item.path}
 										to={item.path}
 										ref={i === 0 ? firstLinkRef : null}
-										className={`px-3 py-2 rounded-full text-sm font-medium transition-colors ${
-											location.pathname === item.path ? 'bg-blue-900 text-white shadow' : 'text-gray-700 hover:bg-blue-100 hover:text-blue-900'
-										}`}
+										className={`px-3 py-2 rounded-full text-sm font-medium transition-colors ${location.pathname === item.path ? 'bg-blue-900 text-white shadow' : 'text-gray-700 hover:bg-blue-100 hover:text-blue-900'
+											}`}
 									>
 										{item.label}
 									</Link>
@@ -107,37 +133,6 @@ export default function Navbar() {
 					</div>
 				</div>
 			</div>
-
-			{isMenuOpen && (
-				<div className="fixed inset-0 z-50 flex flex-col bg-slate-950/95 text-white">
-					<div className="flex items-center justify-between px-6 pt-6">
-						<span className="text-lg font-semibold tracking-wide">Navigation</span>
-						<button onClick={() => setIsMenuOpen(false)} aria-label="Close menu" className="rounded-full border border-white/40 p-2">
-							<X size={20} />
-						</button>
-					</div>
-					<nav className="flex-1 flex flex-col items-center justify-center gap-3 text-2xl font-semibold tracking-wide">
-						{navLinks.map((item) => (
-							<Link
-								key={item.path}
-								to={item.path}
-								onClick={() => setIsMenuOpen(false)}
-								className={`px-6 py-2 rounded-full ${
-									location.pathname === item.path ? 'bg-white text-slate-900' : 'text-white hover:bg-white/10'
-								}`}
-							>
-								{item.label}
-							</Link>
-						))}
-					</nav>
-					<a
-						href="/admission"
-						className="mx-auto mb-10 inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-emerald-100"
-					>
-						{/* Start Admission */}
-					</a>
-				</div>
-			)}
 		</nav>
 	);
 }
