@@ -8,6 +8,8 @@ import CoursesPage from './pages/CoursesPage';
 import ServicesPage from './pages/ServicesPage';
 import AdmissionPage from './pages/AdmissionPage';
 import ContactPage from './pages/ContactPage';
+import Galleryphoto from './pages/Galleryphoto';
+import Staffphoto from './pages/Staffphoto';
 
 function RouteWatcher({ onRouteChange }: { onRouteChange: () => void }) {
   const loc = useLocation();
@@ -161,6 +163,8 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/admission" element={<AdmissionPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/galleryphoto" element={<Galleryphoto />} />
+            <Route path="/staffphoto" element={<Staffphoto />} />
           </Routes>
         </main>
 
