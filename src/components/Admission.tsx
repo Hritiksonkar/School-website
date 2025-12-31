@@ -14,8 +14,8 @@ export default function Admission({ topImage }: { topImage?: string }) {
     },
     {
       icon: CheckCircle,
-      title: 'Entrance Test',
-      description: 'Appear for the entrance assessment (if applicable)',
+      title: 'Real Time Review with Teacher',
+      description: 'Appear for the  assessment (if applicable)',
     },
     {
       icon: Calendar,
