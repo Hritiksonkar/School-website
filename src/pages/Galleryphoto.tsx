@@ -3,8 +3,8 @@ const galleryShowcase = [
     { title: 'Innovation Labs', description: 'Design thinking, robotics, and STEAM explorations.', image: '   ' },
     { title: 'Sports Area', description: 'Inter-school tournaments and training sessions.', image: '/felld.jpg' },
     { title: 'Cultural Fest', description: 'Performances, art installations, and showcases.', image: '/gallery/culture-1.jpg' },
-    { title: 'Community Outreach', description: 'Service learning and sustainability drives.', image: '/gallery/community-1.jpg' },
-    { title: 'Classroom Moments', description: 'Collaborative projects and mentorship circles.', image: '/gallery/class-1.jpg' },
+    { title: 'College environment', description: 'Service learning and sustainability drives.', image: '/gallery/line.jpg' },
+    { title: 'Classroom Moments', description: 'Collaborative projects and mentorship circles.', image: '/.jpg' },
 ];
 
 export default function Galleryphoto() {
