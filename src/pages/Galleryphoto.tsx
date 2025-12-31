@@ -1,7 +1,7 @@
 const galleryShowcase = [
-    { title: 'Campus Life', description: 'Assemblies, clubs, and vibrant corridors.', image: '/gallery/campus-1.jpg' },
-    { title: 'Innovation Labs', description: 'Design thinking, robotics, and STEAM explorations.', image: '/gallery/lab-1.jpg' },
-    { title: 'Sports Arena', description: 'Inter-school tournaments and training sessions.', image: '/gallery/sports-1.jpg' },
+    { title: 'Campus Life', description: 'Assemblies, clubs, and vibrant corridors.', image: '\image.png' },
+    { title: 'Innovation Labs', description: 'Design thinking, robotics, and STEAM explorations.', image: '   ' },
+    { title: 'Sports Area', description: 'Inter-school tournaments and training sessions.', image: '/felld.jpg' },
     { title: 'Cultural Fest', description: 'Performances, art installations, and showcases.', image: '/gallery/culture-1.jpg' },
     { title: 'Community Outreach', description: 'Service learning and sustainability drives.', image: '/gallery/community-1.jpg' },
     { title: 'Classroom Moments', description: 'Collaborative projects and mentorship circles.', image: '/gallery/class-1.jpg' },

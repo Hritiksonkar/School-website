@@ -1,10 +1,10 @@
 const staffGallery = [
-    { name: 'Dr. Priya Sharma', role: 'Principal', tenure: 'Since 2010', image: '/team/priya.jpg' },
-    { name: 'Mr. Raghav Verma', role: 'Head of Innovation', tenure: 'Since 2012', image: '/team/raghav.jpg' },
-    { name: 'Ms. Ananya Gupta', role: 'Curriculum Director', tenure: 'Since 2015', image: '/team/ananya.jpg' },
-    { name: 'Mr. Arjun Sethi', role: 'Global Programs Coordinator', tenure: 'Since 2016', image: '/team/arjun.jpg' },
-    { name: 'Ms. Kavya Menon', role: 'Wellbeing Coach', tenure: 'Since 2018', image: '/team/kavya.jpg' },
-    { name: 'Mr. Dev Malhotra', role: 'STEM Mentor', tenure: 'Since 2019', image: '/team/dev.jpg' },
+    { name: 'Ms. Anita Yadav', role: 'Principal', image: '/puja3.jpg' },
+    { name: 'Mr. Ramanand Yadav', role: 'Head of Innovation',  image: '/puja3.jpg' },
+    { name: 'Mr. Anil Yadav ', role: 'Curriculum Director',   image: '/servicers.jpg' },
+    { name: 'Mr. Rohit Yadav', role: 'Global Programs Coordinator',  image: '/servicers.jpg' },
+    { name: 'Mr. Sunil Yadav ', role: 'Wellbeing Coach',   image: '/team/kavya.jpg' },
+    { name: 'Other Faculty', role: 'other faculty', image: '/puja2.jpg' },
 ];
 
 export default function Staffphoto() {
@@ -38,7 +38,7 @@ export default function Staffphoto() {
                             <div className="mt-4 space-y-1">
                                 <p className="text-xl font-semibold text-white">{member.name}</p>
                                 <p className="text-sm uppercase tracking-[0.3em] text-emerald-200">{member.role}</p>
-                                <p className="text-sm text-slate-300">Tenure: {member.tenure}</p>
+                                
                             </div>
                         </article>
                     ))}
