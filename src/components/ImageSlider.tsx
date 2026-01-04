@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const slides = [
 	{
 		id: 1,
-		title: 'Welcome to Munnar Ram Inter College',
+		title: 'Welcome to Munner Ram Inter College',
 		description: 'Excellence in Education Since Establishment',
 		image: '/frontend.jpg',
 	},

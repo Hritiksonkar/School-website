@@ -99,12 +99,13 @@ export default function Navbar() {
 										</Link>
 									))}
 									<hr className="my-1 border-gray-100" />
-									<a
-										href="/admission"
+									<Link
+										to="/admission"
+										onClick={() => setIsMenuOpen(false)}
 										className="block px-4 py-2 text-sm font-semibold text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
 									>
 										Apply Now
-									</a>
+									</Link>
 								</div>
 							</div>
 						)}
@@ -123,12 +124,12 @@ export default function Navbar() {
 									</Link>
 								))}
 							</nav>
-							<a
-								href="/admission"
+							<Link
+								to="/admission"
 								className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-700 to-blue-900 px-5 py-2 text-sm font-semibold text-white shadow hover:from-blue-900 hover:to-blue-700"
 							>
 								Apply Now
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

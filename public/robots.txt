@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://munner.ram.inter.college.hritik24.tech/sitemap.xml

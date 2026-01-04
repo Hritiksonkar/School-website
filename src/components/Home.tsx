@@ -1,4 +1,5 @@
 import ImageSlider from './ImageSlider';
+import { Link } from 'react-router-dom';
 import {
   Award,
   Users as UsersIcon,
@@ -142,8 +143,8 @@ export default function Home() {
       {/* Quick Action Cards */}
       <div className="py-8 bg-white">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <a
-            href="/admission"
+          <Link
+            to="/admission"
             role="button"
             aria-label="Admission - Apply Now"
             className="w-full flex flex-col items-center gap-3 bg-blue-50 hover:bg-blue-100 p-4 sm:p-6 rounded-lg shadow-sm text-center transition touch-manipulation focus:outline-none focus:ring-3 focus:ring-blue-200"
@@ -151,10 +152,10 @@ export default function Home() {
             <FileText className="text-blue-900" size={28} />
             <span className="font-semibold text-blue-900">Admission</span>
             <small className="text-gray-500">Apply Now</small>
-          </a>
+          </Link>
 
-          <a
-            href="/gallery"
+          <Link
+            to="/galleryphoto"
             role="button"
             aria-label="Gallery - Campus Photos"
             className="w-full flex flex-col items-center gap-3 bg-blue-50 hover:bg-blue-100 p-4 sm:p-6 rounded-lg shadow-sm text-center transition touch-manipulation focus:outline-none focus:ring-3 focus:ring-blue-200"
@@ -162,10 +163,10 @@ export default function Home() {
             <GalleryHorizontal className="text-blue-900" size={28} />
             <span className="font-semibold text-blue-900">Gallery</span>
             <small className="text-gray-500">Campus Photos</small>
-          </a>
+          </Link>
 
-          <a
-            href="/results"
+          <Link
+            to="/courses"
             role="button"
             aria-label="Results - Check Results"
             className="w-full flex flex-col items-center gap-3 bg-blue-50 hover:bg-blue-100 p-4 sm:p-6 rounded-lg shadow-sm text-center transition touch-manipulation focus:outline-none focus:ring-3 focus:ring-blue-200"
@@ -173,10 +174,10 @@ export default function Home() {
             <Award className="text-blue-900" size={28} />
             <span className="font-semibold text-blue-900">Results</span>
             <small className="text-gray-500">Check Results</small>
-          </a>
+          </Link>
 
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             role="button"
             aria-label="Contact - Get in touch"
             className="w-full flex flex-col items-center gap-3 bg-blue-50 hover:bg-blue-100 p-4 sm:p-6 rounded-lg shadow-sm text-center transition touch-manipulation focus:outline-none focus:ring-3 focus:ring-blue-200"
@@ -184,7 +185,7 @@ export default function Home() {
             <Phone className="text-blue-900" size={28} />
             <span className="font-semibold text-blue-900">Contact</span>
             <small className="text-gray-500">Get in touch</small>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -305,12 +306,12 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center">
-            <a
-              href="/staffphoto"
+            <Link
+              to="/staffphoto"
               className="inline-flex items-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-100"
             >
               Meet the entire faculty
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -331,12 +332,12 @@ export default function Home() {
               challenges.
             </p>
             <div className="mt-8 flex justify-center">
-              <a
-                href="/about"
+              <Link
+                to="/about"
                 className="inline-block bg-gradient-to-r from-blue-700 to-blue-900 text-white px-6 py-3 rounded-lg font-semibold shadow hover:from-blue-900 hover:to-blue-700 transition-all"
               >
                 About Our College
-              </a>
+              </Link>
             </div>
           </div>
         </div>

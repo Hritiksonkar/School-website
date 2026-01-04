@@ -80,19 +80,19 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/admission" className="text-gray-400 hover:text-white transition-colors">
                   Fee Structure
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/courses" className="text-gray-400 hover:text-white transition-colors">
                   Exam Results
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/galleryphoto" className="text-gray-400 hover:text-white transition-colors">
                   Gallery
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
