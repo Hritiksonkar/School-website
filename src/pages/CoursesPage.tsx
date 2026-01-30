@@ -1,5 +1,14 @@
+import { useEffect } from 'react';
 import Courses from '../components/Courses';
 
 export default function CoursesPage() {
-  return <Courses />;
+  useEffect(() => {
+    document.title = 'Courses | Munner Ram Inter College';
+  }, []);
+
+  return (
+    <main>
+      <Courses />
+    </main>
+  );
 }
