@@ -36,7 +36,7 @@ export default function Contact() {
     return {
       from_name: get('name'),
       from_email: get('email'),
-      email: get('email'), // Send both to be safe against template variations
+     // Send both to be safe against template variations
       from_phone: get('phone'),
       subject: get('subject'),
       message: get('message'),
